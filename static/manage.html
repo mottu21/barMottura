@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Bar Mottura</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#!">Bar Mottura</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Manage</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">User Info</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!" id="infoUser"></a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!" id="infoLevel"></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex ms-lg-3 mt-md-3 mt-sm-3 mt-3 mt-lg-0">
+                        <button class="btn btn-outline-dark rounded-pill" type="button" id="btnAdd" data-bs-toggle="modal" data-bs-target="#modalAdd">
+                            <i class="bi bi-plus-lg"></i>
+                            Add
+                        </button>
+                    </form>
+                    <form class="d-flex ms-lg-3 mt-md-3 mt-sm-3 mt-3 mt-lg-0">
+                        <button class="btn btn-outline-dark rounded-pill" type="button" id="btnLogout">
+                            <i class="bi bi-box-arrow-left"></i>
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <!--Modal-->
+        <div class="modal fade" tabindex="-1" id="modalAdd">
+            <div class="modal-dialog">
+              <div class="modal-content rounded rounded-3">
+                    <div class="modal-header ">
+                        <h5 class="modal-title fs-3">Add your item here</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modalAddBody">
+                        <div class="row">
+                            <p class="col-6">
+                                <label class="form-label text-secondary" for="codProdottoAdd">Codice Prodotto: </label>
+                                <input type="text" class="form-control" id="codProdottoAdd" placeholder="managed by the system" readonly/>
+                            </p>
+                            <p class="col-6">
+                                <label class="form-label text-secondary" for="descrizioneAdd">Descrizione Prodotto: </label>
+                                <input type="text" class="form-control" id="descrizioneAdd"/>
+                            </p>
+                            <p class="col-6">
+                                <label class="form-label text-secondary" for="prezzoAdd">Prezzo: €</label>
+                                <input type="text" class="form-control" id="prezzoAdd" />
+                            </p>
+                            <p class="col-6">
+                                <label class="form-label text-secondary" for="immagineAdd">Immagine: </label>
+                                <input type="text" class="form-control" id="immagineAdd"/>
+                            </p>
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-dark rounded-pill" id="btnAddItem">Add your item</button>
+                    </div>
+              </div>
+            </div>
+        </div>
+
+
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Management Area</h1>
+                    <!--<p class="lead fw-normal text-white-50 mb-0">order down below</p>-->
+                </div>
+            </div>
+        </header>
+        <!--Section-->
+        <section class="py-5">
+            <div class="container-fluid px-4 px-lg-5 mt-5">
+                <div class="row">
+
+                    <div class="col-2 nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link active" id="v-pills-Items-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Items" type="button" role="tab" aria-controls="v-pills-Items" aria-selected="true">Items</button>
+                        <button class="nav-link " id="v-pills-Orders-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Orders" type="button" role="tab" aria-controls="v-pills-Orders" aria-selected="false">Orders</button>
+                        <button class="nav-link " id="v-pills-Users-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Users" type="button" role="tab" aria-controls="v-pills-Users" aria-selected="false">Users</button>
+                    </div>
+                    <div class="col-9 tab-content" id="v-pills-tab-content">
+                        <div class="tab-pane fade show active" id="v-pills-Items" role="tabpanel" aria-labelledby="v-pills-Items-tab">
+                            <div class="accordion accordion-flush" id="accordionItems">
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show" id="v-pills-Orders" role="tabpanel" aria-labelledby="v-pills-Orders-tab">
+                            <div id="orderSection">
+                                <table class="table table-striped table-bordered" id="tab">
+                                    <thead id="tabHead" >
+                                      
+                                    </thead>
+                                    <tbody id="tabBody">
+                                      
+                                    </tbody>
+                                  </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show" id="v-pills-Users" role="tabpanel" aria-labelledby="v-pills-Users-tab">
+                            <table class="table table-striped table-bordered " id="tabUser">
+                                <thead id="tabHeadUser" >
+                                  
+                                </thead>
+                                <tbody id="tabBodyUser">
+                                  
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                    <!--<div class="col-6 border-end  border-dark border-1 ">
+                        <div class="accordion accordion-flush" id="accordionItems">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  CAFFE'
+                                </button>
+                              </h2>
+                              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                  <div class="row">
+                                    <p class="col-5">
+                                        <label class="form-label text-secondary" for="codiceProdotto1">Codice Prodotto: </label>
+                                        <input type="text" class="form-control" id="codiceProdotto1" placeholder="" value="1" readonly/>
+                                    </p>
+                                    <p class="col-5">
+                                        <label class="form-label text-secondary" for="descrizione1">Descrizione Prodotto: </label>
+                                        <input type="text" class="form-control" id="decrizione1" placeholder="" value="CAFFE'"/>
+                                    </p>
+                                    <p class="col-5">
+                                        <label class="form-label text-secondary" for="prezzo1">Prezzo: €</label>
+                                        <input type="text" class="form-control" id="prezzo1" placeholder="" value="1"/>
+                                    </p>
+                                    <p class="col-5">
+                                        <label class="form-label text-secondary" for="immagine1">Descrizione Prodotto: </label>
+                                        <input type="text" class="form-control" id="immagine1" placeholder="" value="caffe.jpg'"/>
+                                    </p>
+                                    <p class="d-flex">
+                                        <button class="btn btn-outline-dark rounded-pill me-2" type="button">
+                                            <i class="bi bi-pencil-square"></i>
+                                            Modify
+                                        </button>
+                                        <button class="btn btn-outline-dark rounded-pill" type="button">
+                                            <i class="bi bi-trash"></i>
+                                            Delete
+                                        </button>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 border-start  border-dark border-1" id="orderSection">
+                        <table class="table" id="tab">
+                            <thead id="tabHead" class="table-dark">
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                              </tr>
+                            </thead>
+                            <tbody id="tabBody">
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>-->
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Footer-->
+        <footer class="py-5 bg-dark mt-auto">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Mottura Roberto</p></div>
+        </footer>
+        <!-- jQuery 3.6 -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/manage.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.11.0/b-2.0.0/sl-1.3.3/datatables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="Editor-2.0.5/css/editor.dataTables.css">
+ 
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.11.0/b-2.0.0/sl-1.3.3/datatables.min.js"></script>
+        <script type="text/javascript" src="Editor-2.0.5/js/dataTables.editor.js"></script>
+    </body>
+</html>
